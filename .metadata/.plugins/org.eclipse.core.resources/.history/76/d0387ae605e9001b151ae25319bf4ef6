@@ -1,9 +1,0 @@
-package br.com.adriano.tcc.user.model;
-
-public class UserModel {
-	
-	private Long id;
-	private String name;
-	private String document;
-	
-}
