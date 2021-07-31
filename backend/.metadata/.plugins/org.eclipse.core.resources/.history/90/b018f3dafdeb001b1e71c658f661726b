@@ -1,0 +1,9 @@
+package br.com.adriano.tcc.address.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.adriano.tcc.address.model.UserModel;
+
+public interface UserRepository extends JpaRepository<UserModel, Long> {
+
+}

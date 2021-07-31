@@ -1,0 +1,43 @@
+package br.com.adriano.tcc.order.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.adriano.tcc.order.dto.OrderDTO;
+import br.com.adriano.tcc.order.exception.OrderNotFoundException;
+import br.com.adriano.tcc.order.model.OrderModel;
+import br.com.adriano.tcc.order.repository.OrderRepository;
+
+@Service
+public class OrderService {
+	
+	@Autowired
+	private OrderRepository repository;
+	
+	public Optional<List<OrderDTO>> getOrders(Long userId) {
+		return new OrderDTO(repository.findAllByUserId(userId));
+	}
+	
+	public OrderDTO getOrder(Long id) {
+		return new OrderDTO(repository.findById(id));
+	}
+
+	public OrderDTO addOrder(OrderDTO model) {
+		return repository.save(model);
+	}
+
+	public OrderDTO editOrder(OrderDTO model) {
+		if(repository.existsById(model.getId())) {
+			return repository.save(model);
+		}
+		
+		throw new OrderNotFoundException();
+	}
+
+	public void deleteOrder(Long modelId) {
+		repository.deleteById(modelId);
+	}
+}

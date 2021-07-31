@@ -1,0 +1,5 @@
+package br.com.adriano.tcc.user.exception;
+
+public class UserNotFoundException extends Exception {
+
+}

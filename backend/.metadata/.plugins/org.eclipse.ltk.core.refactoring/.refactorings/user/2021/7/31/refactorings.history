@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;user&apos;&#x0A;- Original project: &apos;user&apos;&#x0A;- Original elements:&#x0A;     user/src/main/java/br.com.adriano.tcc.user.dto&#x0A;     br.com.adriano.tcc.user.dto.UserDTO.java" description="Delete elements" element1="/src\/main\/java&lt;br.com.adriano.tcc.user.dto" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1627346377324" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,8 @@
+package br.com.adriano.tcc.order.exception;
+
+public class OrderNotFoundException extends Exception {
+
+	public OrderNotFoundException() {
+		super(message);
+	}
+}

@@ -1,0 +1,30 @@
+package br.com.adriano.tcc.order.dto;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeAll;
+
+class OrderDTOTest {
+	
+	OrderDTO dto;
+
+	@BeforeAll
+	void test() {
+		dto = OrderDTO.builder()
+					.id(1L)
+					.name("Adriano TCC")
+					.description("Teste para o TCC")
+					.coordenate("-1 -2")
+				.build();
+	}
+	
+	void dtoTestSuccess() {
+		assertTrue(dto.equals(OrderDTO.builder()
+					.id(1L)
+					.name("Adriano TCC")
+					.description("Teste para o TCC")
+					.coordenate("-1 -2")
+				.build()));
+	}
+
+}

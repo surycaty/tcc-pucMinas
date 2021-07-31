@@ -1,0 +1,5 @@
+package br.com.adriano.tcc.address.dto;
+
+public class AddressDTO {
+
+}
