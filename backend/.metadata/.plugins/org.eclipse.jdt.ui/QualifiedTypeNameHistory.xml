@@ -22,8 +22,15 @@
 <fullyQualifiedTypeName name="lombok.Data"/>
 <fullyQualifiedTypeName name="lombok.ToString"/>
 <fullyQualifiedTypeName name="br.com.adriano.tcc.address.model.AddressModel"/>
-<fullyQualifiedTypeName name="lombok.Builder"/>
 <fullyQualifiedTypeName name="br.com.adriano.tcc.address.dto.AddressDTO"/>
-<fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+<fullyQualifiedTypeName name="lombok.Builder"/>
 <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+<fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+<fullyQualifiedTypeName name="br.com.adriano.tcc.order.exception.OrderNotFoundException"/>
+<fullyQualifiedTypeName name="br.com.adriano.tcc.order.dto.OrderDTO"/>
 </qualifiedTypeNameHistroy>
