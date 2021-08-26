@@ -2,10 +2,12 @@ package br.com.adriano.tcc.user.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.adriano.tcc.user.dto.UserDTO;
 import br.com.adriano.tcc.user.exception.UserNotFoundException;
 import br.com.adriano.tcc.user.model.UserModel;
 import br.com.adriano.tcc.user.repository.UserRepository;
@@ -16,21 +18,27 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-	public List<UserModel> getUsers() {
-		return repository.findAll();
+	public List<UserDTO> getUsers() {
+		return repository.findAll().stream().map(UserDTO::new)
+					.collect(Collectors.toList());
 	}
 	
-	public Optional<UserModel> getUser(Long id) {
-		return repository.findById(id);
+	public UserDTO getUser(Long id) {
+		Optional<UserModel> user = repository.findById(id);
+		if (user.isPresent()) {
+			return new UserDTO(user.get());
+		}
+		
+		throw new UserNotFoundException();
 	}
 
-	public UserModel addUser(UserModel model) {
-		return repository.save(model);
+	public UserDTO addUser(UserDTO model) {
+		return new UserDTO(repository.save(model.modelConverter()));
 	}
 
-	public UserModel editUser(UserModel model) {
+	public UserDTO editUser(UserDTO model) {
 		if(repository.existsById(model.getId()))
-			return repository.save(model);
+			return new UserDTO(repository.save(model.modelConverter()));
 		
 		throw new UserNotFoundException(); 
 	}
