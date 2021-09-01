@@ -1,5 +1,7 @@
 package br.com.adriano.tcc.user.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +34,20 @@ public class UserModel {
 	@Column(columnDefinition = "text", nullable = false)
 	private String document;
 	
-	@Column(columnDefinition = "text", nullable = false)
+	@Column(columnDefinition = "text", nullable = false, unique = true)
 	private String email;
+	
+	@Column(columnDefinition = "text", nullable = false, unique = true)
+	private String username;
+	
+	@Column(columnDefinition = "text", nullable = false)
+	private String password;
+	
+	@Column(columnDefinition = "datetime")
+	private LocalDateTime createDate;
+	
+	@Column(columnDefinition = "datetime")
+	private LocalDateTime updateDate;
 	
 	
 }

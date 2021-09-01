@@ -9,7 +9,13 @@ CREATE TABLE tcc."user" (
 	"document" text NOT NULL,
 	email text NOT NULL,
 	"name" text NOT NULL,
-	CONSTRAINT user_pkey PRIMARY KEY (id)
+	username text NOT NULL,
+	"password" text NOT NULL,
+	create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT user_pkey PRIMARY KEY (id),
+	CONSTRAINT email_un UNIQUE (email),
+	CONSTRAINT username_un UNIQUE (username)
 );
 
 -- tcc.address definition
