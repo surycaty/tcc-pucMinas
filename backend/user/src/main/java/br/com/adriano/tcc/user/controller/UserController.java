@@ -1,6 +1,7 @@
 package br.com.adriano.tcc.user.controller;
 
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class UserController {
     }
 
 	@PostMapping
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO dto) throws NoSuchAlgorithmException {
 		log.info("Add User bodyIn {}", dto);
         return ResponseEntity.ok()
         		.headers(new HttpHeaders())
@@ -52,7 +53,7 @@ public class UserController {
     }
 
 	@PutMapping
-    public ResponseEntity<UserDTO> editUser(@RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> editUser(@RequestBody UserDTO dto) throws NoSuchAlgorithmException {
 		log.info("Edit User bodyIn {}", dto);
         return ResponseEntity.ok()
         		.headers(new HttpHeaders())
