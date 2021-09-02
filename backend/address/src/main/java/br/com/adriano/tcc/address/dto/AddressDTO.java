@@ -1,5 +1,7 @@
 package br.com.adriano.tcc.address.dto;
 
+import java.time.LocalDateTime;
+
 import br.com.adriano.tcc.address.model.AddressModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,8 +19,10 @@ public class AddressDTO {
 	private String street;
 	private String number;
 	private String zipCode;
-	private String complemento;
+	private String complement;
 	private String coordenate;
+	private String createDate;
+	private String updateDate;
 	private Long userId;
 
 	public AddressDTO(AddressModel model) {
@@ -27,8 +31,10 @@ public class AddressDTO {
 		this.street = model.getStreet();
 		this.number = model.getNumber();
 		this.zipCode = model.getZipCode();
-		this.complemento = model.getComplemento();
+		this.complement = model.getComplement();
 		this.coordenate = model.getCoordenate();
+		this.createDate = model.getCreateDate().toString();
+		this.updateDate = model.getUpdateDate().toString();
 		this.userId = model.getUserId();
 		
 	}
@@ -40,8 +46,10 @@ public class AddressDTO {
 					.street(this.street)
 					.number(this.number)
 					.zipCode(this.zipCode)
-					.complemento(this.complemento)
+					.complement(this.complement)
 					.coordenate(this.coordenate)
+					.createDate(LocalDateTime.parse(this.createDate))
+					.updateDate(LocalDateTime.parse(this.updateDate))
 					.userId(this.userId)
 				.build();
 	}

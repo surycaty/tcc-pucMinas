@@ -1,6 +1,8 @@
 package br.com.adriano.tcc.address.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,21 +30,21 @@ public class AddressController {
 	private AddressService service;
 
 	@GetMapping("/{userId}/address")
-    public ResponseEntity<?> getAddresses(@PathVariable Long userId) {
+    public ResponseEntity<List<AddressDTO>> getAddresses(@PathVariable Long userId) {
         return ResponseEntity.ok()
         		.headers(new HttpHeaders())
                 .body(service.getAddresses(userId));
     }
 
 	@GetMapping("/{userId}/address/{id}")
-    public ResponseEntity<?> getAddress(@PathVariable Long userId, @PathVariable Long id) {
+    public ResponseEntity<AddressDTO> getAddress(@PathVariable Long userId, @PathVariable Long id) {
         return ResponseEntity.ok()
         		.headers(new HttpHeaders())
                 .body(service.getAddress(id));
     }
 
 	@PostMapping("/{userId}/address")
-    public ResponseEntity<?> addAddress(@PathVariable Long userId, @RequestBody AddressDTO dto) {
+    public ResponseEntity<AddressDTO> addAddress(@PathVariable Long userId, @RequestBody AddressDTO dto) {
 		log.info("Add Address by User {} and bodyIn {}", userId, dto);
 		dto.setUserId(userId);
         return ResponseEntity.ok()
@@ -51,7 +53,7 @@ public class AddressController {
     }
 
 	@PutMapping("/{userId}/address")
-    public ResponseEntity<?> editAddress(@PathVariable Long userId, @RequestBody AddressDTO dto) {
+    public ResponseEntity<AddressDTO> editAddress(@PathVariable Long userId, @RequestBody AddressDTO dto) {
 		log.info("Edit Address by user {} and bodyIn {}", userId, dto);
 		dto.setUserId(userId);
         return ResponseEntity.ok()
@@ -60,7 +62,7 @@ public class AddressController {
     }
 
 	@DeleteMapping("/{userId}/address/{id}")
-    public ResponseEntity<?> deleteAddress(@PathVariable Long userId, @PathVariable Long id) {
+    public ResponseEntity<String> deleteAddress(@PathVariable Long userId, @PathVariable Long id) {
 		service.deleteAddress(id);
         return ResponseEntity.ok("{ \"result\": \"Deleted!\" }");
     }

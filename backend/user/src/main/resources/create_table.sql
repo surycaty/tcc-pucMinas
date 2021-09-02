@@ -26,13 +26,15 @@ CREATE TABLE tcc."user" (
 
 CREATE TABLE tcc.address (
 	id int8 NOT NULL,
-	complemento text NULL,
-	coordenate text NULL,
 	"name" text NOT NULL,
-	"number" text NULL,
 	street text NOT NULL,
-	id_user int8 NOT NULL,
+	"number" text NULL,
 	zip_code text NULL,
+	complement text NULL,
+	coordenate text NULL,
+	create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	id_user int8 NOT NULL,
 	CONSTRAINT address_pkey PRIMARY KEY (id)
 );
 

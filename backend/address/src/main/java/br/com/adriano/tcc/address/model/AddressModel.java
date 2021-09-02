@@ -1,5 +1,7 @@
 package br.com.adriano.tcc.address.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,10 +41,16 @@ public class AddressModel {
 	private String zipCode;
 	
 	@Column(columnDefinition = "text")
-	private String complemento;
+	private String complement;
 	
 	@Column(columnDefinition = "text")
 	private String coordenate;
+	
+	@Column(columnDefinition = "datetime")
+	private LocalDateTime createDate;
+	
+	@Column(columnDefinition = "datetime")
+	private LocalDateTime updateDate;
 	
 	@Column(name = "id_user", nullable = false)
 	private Long userId;

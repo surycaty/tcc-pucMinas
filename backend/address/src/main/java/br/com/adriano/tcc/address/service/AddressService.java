@@ -1,7 +1,11 @@
 package br.com.adriano.tcc.address.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,21 +21,56 @@ public class AddressService {
 	@Autowired
 	private AddressRepository repository;
 	
-	public Optional<List<AddressModel>> getAddresses(Long userId) {
-		return repository.findAllByUserId(userId);
+	public List<AddressDTO> getAddresses(Long userId) {
+		
+		Optional<List<AddressModel>> addresses = repository.findAllByUserId(userId);
+		
+		if(addresses.isPresent()) {
+			return addresses.get()
+					.stream().map(AddressDTO::new)
+					.collect(Collectors.toList());
+		}
+		
+		return new ArrayList<>();
+		
 	}
 	
-	public Optional<AddressModel> getAddress(Long id) {
-		return repository.findById(id);
+	public AddressDTO getAddress(Long id) {
+		Optional<AddressModel> model = repository.findById(id);
+		
+		if (model.isPresent()) {
+			return new AddressDTO(model.get());
+		}
+		
+		throw new AddressNotFoundException();
 	}
 
-	public AddressModel addAddress(AddressDTO dto) {
-		return repository.save(dto.modelConverter());
+	public AddressDTO addAddress(AddressDTO dto) {
+		
+		LocalDateTime addedDate = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		
+		dto.setCreateDate(addedDate.format(formatter));
+		dto.setUpdateDate(addedDate.format(formatter));
+		
+		return new AddressDTO(repository.save(dto.modelConverter()));
 	}
 
-	public AddressModel editAddress(AddressDTO dto) {
-		if(repository.existsById(dto.getId()))
-			return repository.save(dto.modelConverter());
+	public AddressDTO editAddress(AddressDTO dto) {
+		
+		Optional<AddressModel> model = repository.findById(dto.getId());
+		
+		if(model.isPresent()) {
+			
+			dto.setCreateDate(model.get().getCreateDate().toString());
+			
+			LocalDateTime addedDate = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+			
+			dto.setUpdateDate(addedDate.format(formatter));
+			
+			return new AddressDTO(repository.save(dto.modelConverter()));
+		}
 		
 		throw new AddressNotFoundException();
 	}
