@@ -1,5 +1,7 @@
 package br.com.adriano.tcc.order.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,11 +42,29 @@ public class OrderService {
 	}
 
 	public OrderDTO addOrder(OrderDTO dto) {
+		
+		LocalDateTime addedDate = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		
+		dto.setCreateDate(addedDate.format(formatter));
+		dto.setUpdateDate(addedDate.format(formatter));
+		
 		return new OrderDTO(repository.save(dto.modelConverter()));
 	}
 
 	public OrderDTO editOrder(OrderDTO dto) {
-		if(repository.existsById(dto.getId())) {
+
+		Optional<OrderModel> model = repository.findById(dto.getId());
+		
+		if(model.isPresent()) {
+			
+			dto.setCreateDate(model.get().getCreateDate().toString());
+			
+			LocalDateTime addedDate = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+			
+			dto.setUpdateDate(addedDate.format(formatter));
+			
 			return new OrderDTO(repository.save(dto.modelConverter()));
 		}
 		

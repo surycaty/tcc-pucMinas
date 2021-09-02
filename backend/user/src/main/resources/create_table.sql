@@ -54,6 +54,8 @@ CREATE TABLE tcc."order" (
 	coordenate text NULL,
 	description text NULL,
 	"name" text NOT NULL,
+	create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	id_user int8 NOT NULL,
 	CONSTRAINT order_pkey PRIMARY KEY (id)
 );
