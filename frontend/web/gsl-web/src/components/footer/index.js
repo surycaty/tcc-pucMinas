@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
 
     render() {
         return(
-            <footer>TCC - PUC Minas</footer>
+            <footer className="footer">TCC-PUC Minas - 2021</footer>
         );
     }
 }
