@@ -52,7 +52,7 @@ export default class OrderDetailScreen extends React.Component {
                 <Picker.Item label="Expired" value="Expired" />
               </Picker>
 
-              <Button title="Update" onPress={() => this.props.navigation.navigate('Home')}/>
+              <Button title="Update" onPress={() => this.props.navigation.navigate('OrderList')}/>
             </Container>
           </Container>
         </ThemeProvider>

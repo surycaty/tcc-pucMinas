@@ -2,7 +2,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import LoginScreen from './components/login';
 import RegisterScreen from './components/register';
-import HomeScreen from './components/home';
 import OrderListScreen from './components/order-list';
 import OrderDetailScreen from './components/order-detail';
 
@@ -15,10 +14,6 @@ const NavigationStack = createStackNavigator({
   },
   Register: {
     screen: RegisterScreen,
-    navigationOptions: { headerShown: false, }
-  },
-  Home: {
-    screen: HomeScreen,
     navigationOptions: { headerShown: false, }
   },
   OrderList: {
