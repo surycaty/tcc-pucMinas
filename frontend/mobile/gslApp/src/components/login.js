@@ -28,7 +28,7 @@ export default class LoginScreen extends React.Component {
             </Titlebar>
             <Container>
               <TextInput placeholder="username" autoFocus />
-              <TextInput placeholder="password" />
+              <TextInput secureTextEntry={true} placeholder="password" />
               <View>
                 <Button title="Login" onPress={() => this.props.navigation.navigate('Home')}/>
                 <Text>New register <Text style={{color: 'blue'}}

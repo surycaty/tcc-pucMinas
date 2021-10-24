@@ -32,7 +32,8 @@ export default class RegisterScreen extends React.Component {
               <TextInput placeholder="Number" />
               <TextInput placeholder="Zip Code" />
               <TextInput placeholder="Username" />
-              <TextInput placeholder="Password" />
+              <TextInput secureTextEntry={true} placeholder="Password" />
+              <TextInput secureTextEntry={true} placeholder="Repeat Password" />
               <ButtonGroup>
                 <Button title="Save" onPress={() => this.props.navigation.navigate('OrderList')}/>
                 <Button title="Cancel" onPress={() => this.props.navigation.navigate('Login')}/>
