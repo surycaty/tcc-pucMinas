@@ -33,6 +33,12 @@ public class OrderModel {
 
 	@Column(columnDefinition = "text")
 	private String description;
+	
+	@Column(columnDefinition = "text")
+	private String originStreet;
+	
+	@Column(columnDefinition = "text")
+	private String destinationStreet;
 
 	@Column(columnDefinition = "text")
 	private String coordenate;

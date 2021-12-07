@@ -17,6 +17,8 @@ public class OrderDTO {
 	private Long id;
 	private String name;
 	private String description;
+	private String originStreet;
+	private String destinationStreet;
 	private String coordenate;
 	private String createDate;
 	private String updateDate;
@@ -26,6 +28,8 @@ public class OrderDTO {
 		this.id = model.getId();
 		this.name = model.getName();
 		this.description = model.getDescription();
+		this.originStreet = model.getOriginStreet();
+		this.destinationStreet = model.getDestinationStreet();
 		this.coordenate = model.getCoordenate();
 		this.createDate = model.getCreateDate().toString();
 		this.updateDate = model.getUpdateDate().toString();
@@ -37,6 +41,8 @@ public class OrderDTO {
 					.id(this.id)
 					.name(this.name)
 					.description(this.description)
+					.originStreet(this.originStreet)
+					.destinationStreet(this.destinationStreet)
 					.coordenate(this.coordenate)
 					.createDate(LocalDateTime.parse(this.createDate))
 					.updateDate(LocalDateTime.parse(this.updateDate))
